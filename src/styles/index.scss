@@ -4,16 +4,18 @@
 *,
 *:after,
 *:before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font: 16px/1.25 Arial, sans-serif;
-    min-width: 320px;
+  font: 16px/1.25 Arial, sans-serif;
+  min-width: 320px;
 }
+
 a {
-    color:$primary;
-    &:hover {
-        text-decoration: none;
-    }
+  color: $primary;
+
+  &:hover {
+    text-decoration: none;
+  }
 }

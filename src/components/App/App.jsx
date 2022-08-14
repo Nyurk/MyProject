@@ -1,17 +1,17 @@
-import Button from '../Button/Button';
-import styles from '../App/App.module.scss';
+import React from 'react';
 
-const App = () => {
-    return (
-        <>
-            <Button>text</Button>
-            <Button className={styles.secondary}>text</Button>
-            <Button className={styles.dark}>text</Button>
-            <Button disabled>text</Button>
-            <a href="http://google.com">link</a>
-        </>
-    )
+import Button from '../Button';
+import styles from './App.module.scss';
 
-};
+function App() {
+  return (
+    <>
+      <Button>text</Button>
+      <Button className={styles.secondary}>text</Button>
+      <Button className={styles.dark}>text</Button>
+      <Button disabled>text</Button>
+    </>
+  );
+}
 
 export default App;

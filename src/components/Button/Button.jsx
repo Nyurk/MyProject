@@ -1,20 +1,28 @@
+import React, { useMemo } from 'react';
 import cn from 'classnames';
 
 import styles from './Button.module.scss';
-import {useMemo} from "react";
 
-const Button = (props) => {
-    const{children, className, disabled, onClick} = props;
+function Button(props) {
+  const { children, className, disabled, onClick } = props;
 
-    const classes = useMemo(() => cn(
+  const classes = useMemo(
+    () =>
+      cn(
         styles.container,
         {
-            [styles.disabled]: disabled,
+          [styles.disabled]: disabled,
         },
         className,
-    ), [className,disabled]);
+      ),
+    [className, disabled],
+  );
 
-    return <button className={classes} disabled={disabled} onClick={onClick}>{children}</button>
-};
+  return (
+    <button type="button" className={classes} disabled={disabled} onClick={onClick}>
+      {children}
+    </button>
+  );
+}
 
 export default Button;
