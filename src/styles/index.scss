@@ -1,0 +1,19 @@
+@import-normalize;
+@import '../styles/variables';
+
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+body {
+    font: 16px/1.25 Arial, sans-serif;
+    min-width: 320px;
+}
+a{
+    color:$primary;
+    &:hover{
+        text-decoration: none;
+    }
+}
