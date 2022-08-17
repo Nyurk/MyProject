@@ -1,0 +1,34 @@
+@import '../../styles/variables.scss';
+
+.container {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  margin: 0 0 16px;
+  color: $dark;
+  border: 3px solid $secondary;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  &:focus {
+    border-color: $primary;
+    border-width: 3px;
+  }
+}
+.textarea {
+  width: 100%;
+  display: block;
+  padding: 8px 12px;
+  margin: 0 0 16px;
+  color: $dark;
+  border: 3px solid $secondary;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+  min-height: 150px;
+  overflow: auto;
+  &:focus {
+    border-color: $primary;
+    border-width: 3px;
+  }
+}
