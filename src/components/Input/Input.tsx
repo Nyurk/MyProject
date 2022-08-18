@@ -22,9 +22,7 @@ const Input: React.FC<IInputProps> = (props) => {
   return textarea ? (
     <input value={value} type={type} className={styles.container} onChange={handleChange} />
   ) : (
-    <textarea className={styles.textarea} onChange={handleChange}>
-      {value}
-    </textarea>
+    <textarea className={styles.textarea} onChange={handleChange} value={value} />
   );
 };
 
