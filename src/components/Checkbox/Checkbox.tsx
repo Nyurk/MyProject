@@ -6,7 +6,7 @@ interface ICheckbox {
   label: string;
   checked: boolean;
   id: string;
-  onChange : (value: boolean) => void;
+  onChange: (value: boolean) => void;
 }
 
 const Checkbox: React.FC<ICheckbox> = (props) => {
