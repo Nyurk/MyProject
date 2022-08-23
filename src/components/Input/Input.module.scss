@@ -6,13 +6,12 @@
   padding: 8px 12px;
   margin: 0 0 16px;
   color: $dark;
-  border: 3px solid $secondary;
+  border: 2px solid $secondary;
   border-radius: 8px;
   outline: none;
   font-size: 16px;
   &:focus {
     border-color: $primary;
-    border-width: 3px;
   }
 }
 .textarea {
@@ -21,7 +20,7 @@
   padding:12px;
   margin: 0 0 16px;
   color: $dark;
-  border: 3px solid $secondary;
+  border: 2px solid $secondary;
   border-radius: 8px;
   outline: none;
   font-size: 16px;

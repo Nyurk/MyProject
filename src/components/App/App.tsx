@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Button from '../Button';
-import styles from './App.module.scss';
 import Input from '../Input';
 import RadioGroup from '../RadioGroup';
+import Checkbox from '../Checkbox';
+import Select from '../Select';
+import styles from './App.module.scss';
 
 const options = [
   {
@@ -21,11 +23,15 @@ const options = [
 ];
 
 const App: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = React.useState<string>('');
 
-  const [textarea, setTextarea] = useState<string>('');
+  const [textarea, setTextarea] = React.useState<string>('');
 
-  const [radio, setRadio] = useState<string>(options[0].value);
+  const [radio, setRadio] = React.useState<string>(options[0].value);
+
+  const [checked, setChecked] = React.useState<boolean>(false);
+
+  const [selectValue, setSelectValue] = React.useState<Maybe<IInputOption>>(null);
 
   const handleChangeInput = (value: string) => {
     setInputValue(value);
@@ -37,6 +43,14 @@ const App: React.FC = () => {
 
   const handleRadioChange = (value: string) => {
     setRadio(value);
+  };
+
+  const handleCheckboxChange = (value: boolean) => {
+    setChecked(value);
+  };
+
+  const handleSelectChange = (value: Maybe<IInputOption>) => {
+    setSelectValue(value);
   };
 
   return (
@@ -54,6 +68,10 @@ const App: React.FC = () => {
       <Input textarea value={textarea} onChange={handleChangeTextarea} />
 
       <RadioGroup options={options} selected={radio} onChange={handleRadioChange} />
+
+      <Checkbox checked={checked} id="checkbox" label="test" onChange={handleCheckboxChange} />
+
+      <Select value={selectValue} options={options} onChange={handleSelectChange} />
     </>
   );
 };
