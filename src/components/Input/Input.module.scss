@@ -2,32 +2,26 @@
 
 .container {
   display: block;
+  padding: 0 0 20px;
+
+}
+.label {
+  margin: 0 0 4px;
+}
+.input {
+  display: block;
   width: 100%;
   padding: 8px 12px;
-  margin: 0 0 16px;
+  margin: 0 0 8px;
   color: $dark;
   border: 2px solid $secondary;
   border-radius: 8px;
   outline: none;
   font-size: 16px;
+
   &:focus {
     border-color: $primary;
   }
 }
-.textarea {
-  width: 100%;
-  display: block;
-  padding:12px;
-  margin: 0 0 16px;
-  color: $dark;
-  border: 2px solid $secondary;
-  border-radius: 8px;
-  outline: none;
-  font-size: 16px;
-  min-height: 150px;
-  overflow: auto;
-  &:focus {
-    border-color: $primary;
-    border-width: 3px;
-  }
-}
+
+
