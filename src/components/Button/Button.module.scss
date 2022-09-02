@@ -3,13 +3,14 @@
 .container {
   border: 0;
   margin: 0;
-  padding: 8px 12px;
+  padding: 16px 12px;
   outline: none;
   cursor: pointer;
   background: $primary;
   color: #fff;
   border-radius: 8px;
   min-width: 150px;
+  font-size: 16px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
 
   &:hover {

@@ -1,29 +1,43 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import cn from 'classnames';
 
 import styles from './Input.module.scss';
+import InputError from '../InputError';
 
 interface IInputProps {
+  label?: string;
+  name: string;
   type?: 'text' | 'tel' | 'email' | 'password';
   value?: string;
-  textarea?: boolean;
+  error?: string;
   onChange: (string) => void;
+  className?: string;
 }
 
-const Input: React.FC<IInputProps> = (props) => {
-  const { value, type = 'text', textarea, onChange } = props;
+const Input = React.forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
+  const { name, label, className, value = '', type = 'text', error, onChange } = props;
 
-  const handleChange = React.useCallback(
-    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      onChange(e.target.value);
-    },
-    [onChange],
-  );
+  const classes = React.useMemo(() => {
+    return cn(styles.container, className);
+  }, [className]);
 
-  return textarea ? (
-    <input value={value} type={type} className={styles.container} onChange={handleChange} />
-  ) : (
-    <textarea className={styles.textarea} onChange={handleChange} value={value} />
+  return (
+    <label htmlFor={name} className={classes}>
+      {!!label && <div className={styles.label}>{label}</div>}
+
+      <input
+        id={name}
+        type={type}
+        className={styles.input}
+        ref={ref}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
+
+      {!!error && <InputError>{error}</InputError>}
+    </label>
   );
-};
+});
 
 export default Input;

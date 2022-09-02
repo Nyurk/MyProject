@@ -1,61 +1,30 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { observer } from 'mobx-react-lite';
 
+import { usersStore } from '../../stores';
+import UserForm from '../UserForm/UserForm';
 import Button from '../Button';
-import styles from './App.module.scss';
-import Input from '../Input';
-import RadioGroup from '../RadioGroup';
-
-const options = [
-  {
-    label: 'text1',
-    value: 'text1',
-  },
-  {
-    label: 'text2',
-    value: 'text2',
-  },
-  {
-    label: 'text3',
-    value: 'text3',
-  },
-];
 
 const App: React.FC = () => {
-  const [inputValue, setInputValue] = useState<string>('');
+  const { loadingUsers, users } = usersStore;
 
-  const [textarea, setTextarea] = useState<string>('');
-
-  const [radio, setRadio] = useState<string>(options[0].value);
-
-  const handleChangeInput = (value: string) => {
-    setInputValue(value);
-  };
-
-  const handleChangeTextarea = (value: string) => {
-    setTextarea(value);
-  };
-
-  const handleRadioChange = (value: string) => {
-    setRadio(value);
-  };
-
-  return (
+  return loadingUsers ? (
+    <div>Loading...</div>
+  ) : (
     <>
-      <Button>text</Button>
+      {users.map((user) => {
+        return (
+          <div key={user.id}>
+            {user.firstName}
+            {user.lastName}
+            <Button onClick={() => usersStore.deleteUser(user.id)}>Удалить пользователя</Button>
+          </div>
+        );
+      })}
 
-      <Button className={styles.secondary}>text</Button>
-
-      <Button className={styles.dark}>text</Button>
-
-      <Button disabled>text</Button>
-
-      <Input value={inputValue} onChange={handleChangeInput} />
-
-      <Input textarea value={textarea} onChange={handleChangeTextarea} />
-
-      <RadioGroup options={options} selected={radio} onChange={handleRadioChange} />
+      <UserForm />
     </>
   );
 };
 
-export default App;
+export default observer(App);
