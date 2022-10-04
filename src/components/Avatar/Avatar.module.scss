@@ -1,0 +1,30 @@
+@import '../../styles/variables.scss';
+
+.container{
+  display: flex;
+  align-items: center;
+  color:#fff;
+  padding: 0 16px;
+}
+.photo{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border:2px solid $grey;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $primary;
+  margin: 0 16px;
+  img{
+    display: block;
+    width: 100%;
+  }
+  .initials{
+    font-size: 30px;
+    line-height: 36px;
+    color:#fff;
+  }
+}
+

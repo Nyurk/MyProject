@@ -9,8 +9,8 @@ interface ISelectProps {
   options: IInputOption[];
   onChange: (value: Maybe<IInputOption>) => void;
   value: Maybe<IInputOption>;
-  error?: string;
   label: string;
+  error?: string;
   className?: string;
 }
 

@@ -8,9 +8,10 @@ interface IButtonProps {
   className?: string;
   disabled?: boolean;
   onClick?: () => void;
+  children?: React.ReactNode;
 }
 
-const Button: React.FC<React.PropsWithChildren<IButtonProps>> = (props) => {
+const Button: React.FC<IButtonProps> = (props) => {
   const { type = 'button', className, disabled, children, onClick } = props;
 
   const classes = React.useMemo<string>(() => {

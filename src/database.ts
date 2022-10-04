@@ -1,5 +1,5 @@
 import Dexie from 'dexie';
-import { IUser } from './constants/users';
+import { IUser, UserRole } from './constants/users';
 import { IProject } from './constants/projects';
 import Translations from './constants/translations';
 
@@ -14,7 +14,7 @@ const DB_NAME = 'my-app-database';
 const START_VERSION = 1;
 
 const scheme1 = {
-  [DBTables.Users]: 'id',
+  [DBTables.Users]: 'id, email, role',
   [DBTables.Projects]: 'id',
   [DBTables.ProjectsToUser]: 'id',
 };
@@ -46,8 +46,23 @@ class Database {
     return this.db.table<IUser>(DBTables.Users).toArray();
   }
 
-  public async readUser(id: string): Promise<Maybe<IUser>> {
+  public async getUserById(id: string): Promise<Maybe<IUser>> {
     const user = await this.db.table<IUser>(DBTables.Users).get(id);
+
+    return user || null;
+  }
+
+  public async isAdminExist(): Promise<boolean> {
+    const admins = await this.db
+      .table<IUser>(DBTables.Users)
+      .where({ role: UserRole.Admin })
+      .toArray();
+
+    return !!admins.length;
+  }
+
+  public async getUserByEmail(email: string): Promise<Maybe<IUser>> {
+    const user = await this.db.table<IUser>(DBTables.Users).get({ email });
 
     return user || null;
   }

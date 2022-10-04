@@ -10,8 +10,8 @@ interface IInputProps {
   type?: 'text' | 'tel' | 'email' | 'password';
   value?: string;
   error?: string;
-  onChange: (string) => void;
   className?: string;
+  onChange: (string) => void;
 }
 
 const Input = React.forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
@@ -35,7 +35,7 @@ const Input = React.forwardRef<HTMLInputElement, IInputProps>((props, ref) => {
         onChange={onChange}
       />
 
-      {!!error && <InputError>{error}</InputError>}
+      {!!error && <InputError className={styles.error}>{error}</InputError>}
     </label>
   );
 });

@@ -1,8 +1,6 @@
 export enum UserRole {
   Admin = 'Admin',
-  Manager = 'Manager',
-  Developer = 'Developer',
-  Tester = 'Tester',
+  User = 'User',
 }
 
 export const userRoleOptions: IInputOption[] = Object.keys(UserRole).map((key) => {
@@ -16,10 +14,10 @@ export const userRoleOptions: IInputOption[] = Object.keys(UserRole).map((key) =
 
 export interface IUser {
   id: string;
-  role: UserRole;
   firstName: string;
   lastName: string;
   email: string;
   password: string;
+  role: UserRole;
   avatar?: string;
 }

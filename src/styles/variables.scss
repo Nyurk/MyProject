@@ -3,3 +3,21 @@ $secondary: #acc4d2;
 $green: #b2b27a;
 $grey: #eaeef4;
 $dark: #524946;
+
+$blue: #1e88e5;
+$green: #43a047;
+$yellow: #fdd835;
+$red: #e53935;
+
+@mixin transparentButton {
+  padding: 0;
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+@mixin resetList{
+  margin:0;
+  padding: 0;
+  list-style: none;
+}

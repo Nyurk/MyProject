@@ -1,18 +1,18 @@
 @import '../../styles/variables.scss';
 
 .container {
-  display: block;
-  padding: 0 0 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
 
-}
 .label {
-  margin: 0 0 4px;
+  margin-bottom: 4px;
 }
+
 .input {
-  display: block;
   width: 100%;
   padding: 8px 12px;
-  margin: 0 0 8px;
   color: $dark;
   border: 2px solid $secondary;
   border-radius: 8px;
@@ -24,4 +24,7 @@
   }
 }
 
+.error {
+  margin-top: 4px;
+}
 

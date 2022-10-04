@@ -3,22 +3,17 @@ import { action, makeObservable, observable } from 'mobx';
 import { IUser } from '../constants/users';
 import DBService from '../database';
 import Translations from '../constants/translations';
-import { IProject } from '../constants/projects';
 
 class UsersStore {
-  public message: Maybe<string> = null;
-
   public users: IUser[] = [];
 
   public loadingUsers: boolean = false;
 
   constructor() {
     makeObservable(this, {
-      message: observable,
       users: observable,
       loadingUsers: observable,
 
-      setMessage: action.bound,
       setUsers: action.bound,
       addUser: action.bound,
       editUser: action.bound,
@@ -28,14 +23,10 @@ class UsersStore {
     this.getUsers().catch();
   }
 
-  public async createUser(user: IUser) {
+  public static async createUser(user: IUser): Promise<Maybe<string>> {
     const error = await DBService.createUser(user);
 
-    this.setMessage(error || Translations.ru.createUserSuccess);
-
-    if (!error) {
-      this.addUser(user);
-    }
+    return error || null;
   }
 
   public async getUsers() {
@@ -55,21 +46,25 @@ class UsersStore {
     this.setUsers(newUsers);
   }
 
-  public async updateUser(updateUserId: string, update: Partial<Omit<IUser, 'id'>>) {
+  public async updateUser(
+    updateUserId: string,
+    update: Partial<Omit<IUser, 'id'>>,
+  ): Promise<Maybe<string>> {
     const error = await DBService.updateUser(updateUserId, update);
 
     if (error) {
-      this.setMessage(Translations.ru.updateUserError);
-    } else {
-      this.editUser(updateUserId, update);
+      return Translations.ru.updateUserError;
     }
+    this.editUser(updateUserId, update);
+    return null;
+  }
+
+  public static async isEmailExist(email: string): Promise<boolean> {
+    const user = await DBService.getUserByEmail(email);
+    return !!user;
   }
 
   // ACTIONS ---------------------------------------------------------------------------------------
-
-  public setMessage(message: string) {
-    this.message = message;
-  }
 
   public setUsers(allUsers: IUser[]) {
     this.users = allUsers;

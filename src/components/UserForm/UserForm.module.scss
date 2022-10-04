@@ -1,2 +1,15 @@
 @import '../../styles/variables.scss';
 
+.container{
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.panel{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.messageSuccess{
+  margin: 0 0 0 20px;
+}
